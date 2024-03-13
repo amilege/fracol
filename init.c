@@ -6,7 +6,7 @@
 /*   By: amile-ge <amile-ge@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 10:43:24 by amile-ge          #+#    #+#             */
-/*   Updated: 2024/03/12 11:57:24 by amile-ge         ###   ########.fr       */
+/*   Updated: 2024/03/13 10:53:10 by amile-ge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "fractal.h"
@@ -44,8 +44,8 @@ int type_cmp(char *nom, char *compar)
 
 void  reinit(t_data *fractal)
 {
-  if (fractal->palette)
-    free(fractal->palette);
+  //if (fractal->palette)
+ //   free(fractal->palette);
   if (fractal->mlx && fractal->img)
     mlx_destroy_image(fractal->mlx, fractal->img);
   if (fractal->addr)

@@ -6,7 +6,7 @@
 /*   By: amile-ge <amile-ge@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:57:43 by amile-ge          #+#    #+#             */
-/*   Updated: 2024/03/12 11:59:48 by amile-ge         ###   ########.fr       */
+/*   Updated: 2024/03/13 10:36:46 by amile-ge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
   
@@ -18,16 +18,18 @@
 int set_color (int iter)
 {
   if (iter == MAX_ITER)
-    return (0);
+    return (int)(0);
   else
   {
     int r;
     int g;
     int b;
+    if (iter > 70)
+    r = (int)(sin(0.05 * iter + 0)* 127 + 128); 
     r = (int)(sin(0.05 * iter + 0)* 127 + 128);
     g = (int)(sin(0.05 * iter + 2)* 127 + 128);
     b = (int)(sin(0.05 * iter + 4)* 127 + 128);
-//   printf("Iter: %d. r: %d, g: %d, b: %d", iter, r, g, b);
+  // printf("Iter: %d. r: %d, g: %d, b: %d", iter, r, g, b);
     return  (r << 16) | (g << 8) | b;
   }
 }
@@ -36,20 +38,21 @@ int set_color (int iter)
 void    set_pixel_color(t_data *fractal, int x, int y, int color, int it_num)
 {
   int pos;
-
- fractal->addr[y * WIDTH*4 + x * 4 + 1] = color >> 8;
-    fractal->addr[y * WIDTH*4 + x * 4 + 2] = color >> 16;
-    fractal->addr[y * WIDTH*4 + x * 4  + 3] = color >> 24;
-}
-/*
   pos = (y * WIDTH + x)*4;
 
     fractal->addr[pos] =  (color & 0xFF0000) >> 16;
     fractal->addr[pos + 1]=  (color & 0x00FF00) >> 8;
     fractal->addr[pos + 2] =  color & 0x0000FF;
    // fractal->addr[pos + 3] =  (color & 0xFF000000) >> 24;
-}
 
+}
+/*
+ }
+
+
+ fractal->addr[y * WIDTH*4 + x * 4 ]= color >> 8;
+    fractal->addr[y * WIDTH*4 + x * 4 + 1] = color >> 16;
+    fractal->addr[y * WIDTH*4 + x * 4  + 2] = color >> 24;
 
     fractal->addr[y * WIDTH*4 + x * 4 + 1] = color >> 8;
     fractal->addr[y * WIDTH*4 + x * 4 + 2] = color >> 16;

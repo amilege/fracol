@@ -6,7 +6,7 @@
 /*   By: amile-ge <amile-ge@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:10:07 by amile-ge          #+#    #+#             */
-/*   Updated: 2024/03/12 11:56:44 by amile-ge         ###   ########.fr       */
+/*   Updated: 2024/03/13 11:15:51 by amile-ge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void    render(t_data *fractal)
+int    render(t_data *fractal)
 {
     double x;
     double  y;
@@ -43,6 +43,7 @@ void    render(t_data *fractal)
     double c_im;
     double re_factor;
     double im_factor;
+    int color;
     int it_num;
     re_factor = (fractal->max_real-fractal->min_real)/(WIDTH-1);
     im_factor = (fractal->max_imagi-fractal->min_imagi)/(HEIGHT-1);
@@ -56,15 +57,14 @@ void    render(t_data *fractal)
           {
             c_re = fractal->min_real + x*re_factor;
             it_num = calc_fractal(fractal, c_re, c_im);
-            set_pixel_color(fractal, x, y, rand(), it_num);
-         //   draw_pixel_img(fractal->img, x, y, it_num);
-
+            color = set_color(it_num);
+            set_pixel_color(fractal, x, y, color, it_num);
             x++;
-
           }
           y++;
     }
     mlx_put_image_to_window(fractal->mlx, fractal->mlx_win, fractal->img, 0, 0);
+    return 0;
 
 }
 /*{
