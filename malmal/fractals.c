@@ -6,13 +6,13 @@
 /*   By: amile-ge <amile-ge@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:16:44 by amile-ge          #+#    #+#             */
-/*   Updated: 2024/03/16 17:55:19 by amile-ge         ###   ########.fr       */
+/*   Updated: 2024/03/12 12:06:35 by amile-ge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractal.h"
 #include "mlx/mlx.h"
-int mandelbrot(t_data *fractal, double c_re, double c_im )// c_re = x0, c_im = y0
+int mandebrot(t_data *fractal, double c_re, double c_im )// c_re = x0, c_im = y0
 {
     double z_re;
     double z_im;

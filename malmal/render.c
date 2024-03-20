@@ -6,7 +6,7 @@
 /*   By: amile-ge <amile-ge@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 11:10:07 by amile-ge          #+#    #+#             */
-/*   Updated: 2024/03/20 09:28:47 by amile-ge         ###   ########.fr       */
+/*   Updated: 2024/03/15 18:34:30 by amile-ge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int calc_fractal(t_data *fractal, double x, double y)
       int it_num;
 
    //   it_num = 0;
-      //if (fractal->name == MANDELBROT)
+      //if (fractal->name == MANDEBROT)
       //{
-          it_num=mandelbrot(fractal, x, y);
+          it_num=mandebrot(fractal, x, y);
      // }
       return (it_num);
 }
@@ -45,18 +45,14 @@ int    render(t_data *fractal)
     double im_factor;
     int color;
     int it_num;
-
-    printf("\nrender:%f\n %f\n",fractal->max_real, fractal->min_real);
     re_factor = (fractal->max_real-fractal->min_real)/(WIDTH-1);
     im_factor = (fractal->max_imagi-fractal->min_imagi)/(HEIGHT-1);
     mlx_clear_window(fractal->mlx, fractal->mlx_win);
     y = 0;
-    fractal->y = 0;
     while (y < HEIGHT)
     {
           c_im = fractal->max_imagi - y*im_factor;
           x = 0;
-          fractal->x = 0;
           while (x < WIDTH)
           {
             c_re = fractal->min_real + x*re_factor;
@@ -64,12 +60,10 @@ int    render(t_data *fractal)
             color = set_color(it_num);
             set_pixel_color(fractal, x, y, color, it_num);
             x++;
-            fractal->x = x;
-            fractal->y = y;
+            fractal->co_x = x;
           }
           y++;
-          fractal->x = x;
-          fractal->y = y;
+          fractal->_y = y;
     }
     mlx_put_image_to_window(fractal->mlx, fractal->mlx_win, fractal->img, 0, 0);
     return 0;
